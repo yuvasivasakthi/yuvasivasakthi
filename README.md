@@ -11,7 +11,7 @@
 
 - 🌱 I’m currently learning **Devops , Hadoop , hive , pig ....**
 
-- 👨‍💻 All of my projects are available at [https://github.com/Shridharan24?tab=projects](https://github.com/yuvasivasakthi?tab=projects)
+- 👨‍💻 All of my projects are available at [https://github.com/yuvasivasakthi?tab=projects](https://github.com/yuvasivasakthi?tab=projects)
 
 - 💬 Ask me about **🤝😌**
 
