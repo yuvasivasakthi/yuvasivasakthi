@@ -17,7 +17,7 @@
 
 - 📫 How to reach me **yuvasivasakthi.2002@gmail.com**
 
-- ⚡ Fun fact **I think I was a good leader...😅👀**
+- ⚡ Fun fact **I think I was a smart worker...😅👀**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
