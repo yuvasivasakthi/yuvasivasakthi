@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuvasivasakthi G — Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#0F6E56;
+  --navy:#042C53;--blue:#185FA5;--blue-light:#E6F1FB;
+  --purple-light:#EEEDFE;--purple:#534AB7;--purple-dark:#3C3489;
+  --amber-light:#FAEEDA;--amber:#BA7517;--amber-dark:#854F0B;
+  --coral-light:#FAECE7;--coral:#D85A30;--coral-dark:#993C1D;
+  --pink-light:#FBEAF0;--pink:#993556;
+  --green-light:#EAF3DE;--green:#3B6D11;
+  --surface:#fff;--surface-off:#F7F9FC;
+  --border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.14);
+  --text:#1a1a1a;--text-secondary:#555;--text-muted:#888;
+  --font:'Segoe UI',system-ui,sans-serif;
+}
+body{font-family:var(--font);background:var(--surface-off);color:var(--text);line-height:1.6}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px}
+.nav-logo{font-weight:800;font-size:1rem;color:var(--teal);letter-spacing:-0.5px}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{font-size:0.8rem;color:var(--text-secondary);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--teal)}
+
+.hero{background:linear-gradient(135deg,#042C53 0%,#0F6E56 60%,#1D9E75 100%);color:white;padding:4.5rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(255,255,255,0.06) 0%,transparent 60%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:4px 14px;font-size:0.75rem;font-weight:600;margin-bottom:1.25rem;color:rgba(255,255,255,0.9)}
+.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.4rem}
+.hero-title{font-size:clamp(0.9rem,2vw,1.1rem);color:rgba(255,255,255,0.7);margin-bottom:1.25rem;font-weight:400}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:1.75rem}
+.hero-tag{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:3px 9px;font-size:0.73rem;color:rgba(255,255,255,0.85)}
+.hero-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:white;color:var(--teal-dark);border:none;border-radius:8px;padding:9px 22px;font-size:0.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.btn-ghost{background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.45);border-radius:8px;padding:9px 22px;font-size:0.85rem;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:white;background:rgba(255,255,255,0.08)}
+
+.stats-bar{background:white;border-bottom:1px solid var(--border);padding:1.25rem 2rem}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem}
+.stat{text-align:center}
+.stat-num{font-size:1.7rem;font-weight:800;color:var(--teal);line-height:1}
+.stat-label{font-size:0.72rem;color:var(--text-muted);margin-top:3px}
+
+.section{padding:3.5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{display:flex;align-items:center;gap:8px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:0.4rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;letter-spacing:-0.5px;margin-bottom:1.75rem}
+
+/* FILTER TABS */
+.filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem}
+.filter-btn{font-size:0.75rem;font-weight:600;padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:white;color:var(--text-secondary);cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal)}
+.filter-btn.active{background:var(--teal);border-color:var(--teal);color:white}
+
+/* PROJECT CARDS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.project-card{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s;display:flex;flex-direction:column}
+.project-card:hover{border-color:var(--teal);box-shadow:0 6px 20px rgba(29,158,117,0.1);transform:translateY(-2px)}
+.project-card.hidden{display:none}
+.project-header{padding:1rem 1rem 0;display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
+.project-icon{width:38px;height:38px;flex-shrink:0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.cat-badge{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.project-card h3{padding:.6rem 1rem 0;font-size:0.87rem;font-weight:700;line-height:1.35}
+.project-desc{padding:.3rem 1rem 0;font-size:0.75rem;color:var(--text-secondary);line-height:1.5;flex:1}
+.project-tech{padding:.6rem 1rem .85rem;display:flex;flex-wrap:wrap;gap:4px;margin-top:.2rem}
+.tech-tag{font-size:0.65rem;font-weight:500;padding:2px 7px;border-radius:4px;background:#F1F5F9;color:#445;border:1px solid #E2E8F0}
+
+/* SKILLS */
+.skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.skill-group{background:white;border-radius:12px;border:1px solid var(--border);padding:1.1rem}
+.skill-group-header{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.skill-group-icon{width:30px;height:30px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--teal-dark);font-size:.9rem}
+.skill-group h3{font-size:0.82rem;font-weight:700}
+.skill-list{display:flex;flex-wrap:wrap;gap:5px}
+.skill-pill{font-size:0.72rem;padding:3px 9px;border-radius:20px;background:var(--surface-off);border:1px solid var(--border);color:var(--text-secondary);font-weight:500;transition:background .2s,border-color .2s,color .2s;cursor:default}
+.skill-pill:hover{background:var(--teal-light);border-color:var(--teal);color:var(--teal-dark)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#0F6E56,#042C53);color:white;text-align:center;padding:4rem 2rem}
+.cta-section h2{font-size:1.7rem;font-weight:800;margin-bottom:.6rem}
+.cta-section p{color:rgba(255,255,255,0.7);margin-bottom:1.5rem}
+.cta-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-bottom:1.75rem}
+.cta-card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:.5rem 1rem;font-size:0.78rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:7px}
+
+footer{text-align:center;padding:1.25rem;font-size:0.75rem;color:var(--text-muted);border-top:1px solid var(--border);background:white}
+
+@media(max-width:600px){.nav-links{display:none}.hero{padding:3rem 1.25rem}.section{padding:2.5rem 1.25rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">YG</span>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge"><i class="ti ti-bolt"></i> Available to join immediately</div>
+  <h1>Yuvasivasakthi G</h1>
+  <p class="hero-title">SharePoint · Power Platform · SCADA · Industrial Automation · AI/ML · Web</p>
+  <div class="hero-tags">
+    <span class="hero-tag">SharePoint Developer</span>
+    <span class="hero-tag">Power Platform</span>
+    <span class="hero-tag">SCADA Engineer</span>
+    <span class="hero-tag">Database Developer</span>
+    <span class="hero-tag">AI & ML</span>
+    <span class="hero-tag">Web Developer</span>
+    <span class="hero-tag">Industrial Automation</span>
+    <span class="hero-tag">Project Coordinator</span>
+  </div>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#projects"><i class="ti ti-folder-open"></i> View All Projects</a>
+    <a class="btn-ghost" href="#contact"><i class="ti ti-mail"></i> Get in Touch</a>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Projects Delivered</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Technologies</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Domains</div></div>
+    <div class="stat"><div class="stat-num">IT+OT</div><div class="stat-label">Unique Niche</div></div>
+    <div class="stat"><div class="stat-num">AI</div><div class="stat-label">+ Industrial</div></div>
+  </div>
+</div>
+
+<div id="projects" class="section">
+  <div class="section-label"><i class="ti ti-folder" aria-hidden="true"></i> Projects</div>
+  <h2 class="section-title">Built and shipped</h2>
+
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" onclick="filter('all',this)">All</button>
+    <button class="filter-btn" onclick="filter('database',this)">Database</button>
+    <button class="filter-btn" onclick="filter('scada',this)">SCADA</button>
+    <button class="filter-btn" onclick="filter('sharepoint',this)">SharePoint</button>
+    <button class="filter-btn" onclick="filter('excel',this)">Excel / VBA</button>
+    <button class="filter-btn" onclick="filter('ai',this)">AI / ML</button>
+    <button class="filter-btn" onclick="filter('web',this)">Web</button>
+    <button class="filter-btn" onclick="filter('site',this)">Site / Field</button>
+  </div>
+
+  <div class="projects-grid" id="projectsGrid">
+
+    <!-- DATABASE -->
+    <div class="project-card" data-cat="database">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--blue-light);color:var(--blue)"><i class="ti ti-database" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--blue-light);color:var(--blue)">Database</span>
+      </div>
+      <h3>Master Material Database</h3>
+      <p class="project-desc">Centralized database tracking material categories, origin, PO details, and issue records — all updated automatically.</p>
+      <div class="project-tech"><span class="tech-tag">MS Access</span><span class="tech-tag">SQL</span></div>
+    </div>
+
+    <div class="project-card" data-cat="database">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--blue-light);color:var(--blue)"><i class="ti ti-table-import" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--blue-light);color:var(--blue)">Database</span>
+      </div>
+      <h3>CPV Alarm Rationalization DB</h3>
+      <p class="project-desc">Imported parameter tables and daily reports into MS Access; created tree-view organized parameter reports.</p>
+      <div class="project-tech"><span class="tech-tag">pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Excel</span><span class="tech-tag">MS Access</span></div>
+    </div>
+
+    <div class="project-card" data-cat="database">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--blue-light);color:var(--blue)"><i class="ti ti-table-import" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--blue-light);color:var(--blue)">Database</span>
+      </div>
+      <h3>Tata Power Parameter Database</h3>
+      <p class="project-desc">Imported parameter tables and daily reports, created organized tree-view reports for Tata Power project.</p>
+      <div class="project-tech"><span class="tech-tag">pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Excel</span><span class="tech-tag">MS Access</span></div>
+    </div>
+
+    <div class="project-card" data-cat="database">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--blue-light);color:var(--blue)"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--blue-light);color:var(--blue)">Database</span>
+      </div>
+      <h3>Intools Versatile DB Comparator</h3>
+      <p class="project-desc">Tool for comparing Intools database records — supports instrument data validation workflows.</p>
+      <div class="project-tech"><span class="tech-tag">Database</span></div>
+    </div>
+
+    <!-- SCADA -->
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-train" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Metro Train SCADA System</h3>
+      <p class="project-desc">Station-wide monitoring and control — escalators, elevators, lighting, doors, fire detection, HVAC, fare collection, and water supply.</p>
+      <div class="project-tech"><span class="tech-tag">Siemens PLC</span><span class="tech-tag">GE Cimplicity</span><span class="tech-tag">F-SCADA</span><span class="tech-tag">P-SCADA</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-pin" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Cimplicity Faceplate Pin Script</h3>
+      <p class="project-desc">Script to limit active faceplates to 5 — pinning one auto-closes the rest, keeping screens clean and usable.</p>
+      <div class="project-tech"><span class="tech-tag">GE Cimplicity</span><span class="tech-tag">VBScript</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-language" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Cimplicity Language Transition</h3>
+      <p class="project-desc">English to Spanish real-time language switching inside GE Cimplicity screens via a toggle script.</p>
+      <div class="project-tech"><span class="tech-tag">GE Cimplicity</span><span class="tech-tag">VBScript</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-bell" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Cimplicity Alarm Banner</h3>
+      <p class="project-desc">Custom alarm banner implementation within GE Cimplicity HMI for real-time alarm visibility.</p>
+      <div class="project-tech"><span class="tech-tag">GE Cimplicity</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-plug-connected" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Cimplicity → SQL Server via ADO</h3>
+      <p class="project-desc">ADO-based integration to connect GE Cimplicity with SQL Server and log real-time tag values to the database.</p>
+      <div class="project-tech"><span class="tech-tag">GE Cimplicity</span><span class="tech-tag">ADO</span><span class="tech-tag">SQL Server</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-plug-connected" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Cimplicity → SQL Server via ODBC</h3>
+      <p class="project-desc">ODBC-based alternative integration path for Cimplicity-to-SQL Server communication and data storage.</p>
+      <div class="project-tech"><span class="tech-tag">GE Cimplicity</span><span class="tech-tag">ODBC</span><span class="tech-tag">SQL Server</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-chart-line" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Real-Time Trend in Cimplicity</h3>
+      <p class="project-desc">Real-time data pulled from SQL Server fed back into Cimplicity to render live trend graphs on HMI screens.</p>
+      <div class="project-tech"><span class="tech-tag">Cimplicity</span><span class="tech-tag">SQL Server</span><span class="tech-tag">.NET</span><span class="tech-tag">T-SQL</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-file-report" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Alarm Report Generator</h3>
+      <p class="project-desc">Pulls Cimplicity alarm data from SQL Server and generates daily, monthly, and yearly Excel alarm reports automatically.</p>
+      <div class="project-tech"><span class="tech-tag">SQL Server</span><span class="tech-tag">Cimplicity</span><span class="tech-tag">SSIS</span><span class="tech-tag">SSRS</span><span class="tech-tag">T-SQL</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-server" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>OPC to SQL Server Historian</h3>
+      <p class="project-desc">OPC data collection pipeline with real-time SQL Server historian and thin-client connectivity via OPC GDA Web.</p>
+      <div class="project-tech"><span class="tech-tag">Matrikon OPC</span><span class="tech-tag">OPC GDA</span><span class="tech-tag">SQL Server</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-world-www" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>Web-Based SCADA Tag Viewer</h3>
+      <p class="project-desc">Browser-based interface for SCADA tag selection, filtering, time-range retrieval, and status visualization.</p>
+      <div class="project-tech"><span class="tech-tag">ASP.NET Core</span><span class="tech-tag">Razor Pages</span><span class="tech-tag">SQL Server</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-database-export" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>GE Cimplicity → SQL Integration</h3>
+      <p class="project-desc">Real-time SCADA data logging that writes GE Cimplicity tag values into SQL Server using ADO and VBScript.</p>
+      <div class="project-tech"><span class="tech-tag">GE Cimplicity 2023</span><span class="tech-tag">SQL Server</span><span class="tech-tag">ADO</span><span class="tech-tag">VBScript</span></div>
+    </div>
+
+    <div class="project-card" data-cat="scada">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--amber-light);color:var(--amber-dark)"><i class="ti ti-server-cog" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--amber-light);color:var(--amber-dark)">SCADA</span>
+      </div>
+      <h3>SQL Server Installation</h3>
+      <p class="project-desc">Setup and configuration of SQL Server Express and Developer editions for SCADA and industrial environments.</p>
+      <div class="project-tech"><span class="tech-tag">SQL Server Express</span><span class="tech-tag">SQL Server Developer</span></div>
+    </div>
+
+    <!-- SHAREPOINT -->
+    <div class="project-card" data-cat="sharepoint">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--teal-light);color:var(--teal-dark)"><i class="ti ti-building-factory" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--teal-light);color:var(--teal-dark)">SharePoint</span>
+      </div>
+      <h3>Enterprise Material Management System</h3>
+      <p class="project-desc">End-to-end material inventory and vendor management with automated approval workflows, Power BI dashboards, and Teams notifications.</p>
+      <div class="project-tech"><span class="tech-tag">SharePoint Online</span><span class="tech-tag">Power Apps</span><span class="tech-tag">Power Automate</span><span class="tech-tag">SQL Server</span><span class="tech-tag">Power BI</span><span class="tech-tag">SPFx</span><span class="tech-tag">Graph API</span><span class="tech-tag">Teams</span></div>
+    </div>
+
+    <div class="project-card" data-cat="sharepoint">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--teal-light);color:var(--teal-dark)"><i class="ti ti-confetti" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--teal-light);color:var(--teal-dark)">SharePoint</span>
+      </div>
+      <h3>Birthday Corner</h3>
+      <p class="project-desc">Automated birthday announcement system with email notifications, custom SPFx web parts, and Sharegate migration.</p>
+      <div class="project-tech"><span class="tech-tag">SharePoint</span><span class="tech-tag">SPFx</span><span class="tech-tag">Nintex</span><span class="tech-tag">Power Automate</span><span class="tech-tag">SQL Server</span><span class="tech-tag">Sharegate</span></div>
+    </div>
+
+    <div class="project-card" data-cat="sharepoint">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--teal-light);color:var(--teal-dark)"><i class="ti ti-clipboard-check" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--teal-light);color:var(--teal-dark)">SharePoint</span>
+      </div>
+      <h3>PTW Flow Automation</h3>
+      <p class="project-desc">Permit-to-Work SharePoint list for material requests with automated approval routing via Power Automate.</p>
+      <div class="project-tech"><span class="tech-tag">SharePoint</span><span class="tech-tag">Power Automate</span><span class="tech-tag">Power Apps</span></div>
+    </div>
+
+    <div class="project-card" data-cat="sharepoint">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--teal-light);color:var(--teal-dark)"><i class="ti ti-package" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--teal-light);color:var(--teal-dark)">SharePoint</span>
+      </div>
+      <h3>Stores SharePoint Automation</h3>
+      <p class="project-desc">Full Power Platform solution for stores management with automated workflows, Power BI reporting, and email reports.</p>
+      <div class="project-tech"><span class="tech-tag">SharePoint</span><span class="tech-tag">Power Apps</span><span class="tech-tag">Power Automate</span><span class="tech-tag">Power BI</span></div>
+    </div>
+
+    <div class="project-card" data-cat="sharepoint">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--teal-light);color:var(--teal-dark)"><i class="ti ti-ruler" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--teal-light);color:var(--teal-dark)">SharePoint</span>
+      </div>
+      <h3>AutoCAD Work Access</h3>
+      <p class="project-desc">Power App integrated with SharePoint to manage and grant access to AutoCAD work files and workflows.</p>
+      <div class="project-tech"><span class="tech-tag">Power Apps</span><span class="tech-tag">SharePoint</span><span class="tech-tag">Power Automate</span></div>
+    </div>
+
+    <!-- EXCEL / VBA -->
+    <div class="project-card" data-cat="excel">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--green-light);color:var(--green)"><i class="ti ti-report-money" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--green-light);color:var(--green)">Excel / VBA</span>
+      </div>
+      <h3>Expense Report Automation</h3>
+      <p class="project-desc">Automated expense reporting with VBA macros and advanced Excel functions.</p>
+      <div class="project-tech"><span class="tech-tag">VBA</span><span class="tech-tag">Excel</span><span class="tech-tag">Advanced Functions</span></div>
+    </div>
+
+    <div class="project-card" data-cat="excel">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--green-light);color:var(--green)"><i class="ti ti-clock-record" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--green-light);color:var(--green)">Excel / VBA</span>
+      </div>
+      <h3>Task Scheduler via VBScript</h3>
+      <p class="project-desc">VBScript automation using Windows Task Scheduler to launch an application at 2-minute intervals automatically.</p>
+      <div class="project-tech"><span class="tech-tag">VBScript</span><span class="tech-tag">Task Scheduler</span></div>
+    </div>
+
+    <div class="project-card" data-cat="excel">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--green-light);color:var(--green)"><i class="ti ti-chart-pie" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--green-light);color:var(--green)">Excel / VBA</span>
+      </div>
+      <h3>Efficiency Spreadsheet</h3>
+      <p class="project-desc">Efficiency reports generated man-wise and cabinet-wise with OT tracking, Power BI dashboards, and Tableau charts.</p>
+      <div class="project-tech"><span class="tech-tag">Excel</span><span class="tech-tag">VBA</span><span class="tech-tag">DAX</span><span class="tech-tag">Power BI</span><span class="tech-tag">Tableau</span></div>
+    </div>
+
+    <div class="project-card" data-cat="excel">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--green-light);color:var(--green)"><i class="ti ti-checklist" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--green-light);color:var(--green)">Excel / VBA</span>
+      </div>
+      <h3>Project Coordinator Checklist Tracker</h3>
+      <p class="project-desc">Cabinet assembly and software loop-check checklist with manpower tracking, work progress, and task-list tracking.</p>
+      <div class="project-tech"><span class="tech-tag">Excel</span><span class="tech-tag">Power Query</span><span class="tech-tag">VBA</span><span class="tech-tag">Power BI</span><span class="tech-tag">Statistics</span></div>
+    </div>
+
+    <div class="project-card" data-cat="excel">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--green-light);color:var(--green)"><i class="ti ti-user-check" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--green-light);color:var(--green)">Excel / VBA</span>
+      </div>
+      <h3>Attendance Report Automation</h3>
+      <p class="project-desc">Biometric data auto-filled into Excel attendance sheets, eliminating manual data entry for HR teams.</p>
+      <div class="project-tech"><span class="tech-tag">Excel</span><span class="tech-tag">VBA</span><span class="tech-tag">Biometric Integration</span></div>
+    </div>
+
+    <div class="project-card" data-cat="excel">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--green-light);color:var(--green)"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--green-light);color:var(--green)">Excel / VBA</span>
+      </div>
+      <h3>Excel Training for Accounts</h3>
+      <p class="project-desc">Delivered Excel training sessions for accounts team covering auto-fill, advanced formulas, and productivity techniques.</p>
+      <div class="project-tech"><span class="tech-tag">Excel</span><span class="tech-tag">Training</span></div>
+    </div>
+
+    <!-- AI / ML -->
+    <div class="project-card" data-cat="ai">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--purple-light);color:var(--purple-dark)"><i class="ti ti-eye" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--purple-light);color:var(--purple-dark)">AI / ML</span>
+      </div>
+      <h3>Azure Custom Vision Object Detection</h3>
+      <p class="project-desc">Image upload → labeling → model training → Prediction API → result visualization pipeline on Azure AI.</p>
+      <div class="project-tech"><span class="tech-tag">Azure Custom Vision</span><span class="tech-tag">Python</span><span class="tech-tag">NumPy</span><span class="tech-tag">ML</span></div>
+    </div>
+
+    <div class="project-card" data-cat="ai">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--purple-light);color:var(--purple-dark)"><i class="ti ti-filter" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--purple-light);color:var(--purple-dark)">AI / ML</span>
+      </div>
+      <h3>Spam Classification Analytics Tool</h3>
+      <p class="project-desc">Dataset import → text cleaning → feature extraction → Naïve Bayes training → spam prediction dashboard.</p>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">pandas</span><span class="tech-tag">Statistics</span><span class="tech-tag">ML</span><span class="tech-tag">Naïve Bayes</span></div>
+    </div>
+
+    <div class="project-card" data-cat="ai">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--purple-light);color:var(--purple-dark)"><i class="ti ti-face-id" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--purple-light);color:var(--purple-dark)">AI / ML</span>
+      </div>
+      <h3>IoT Face Recognition Attendance</h3>
+      <p class="project-desc">Camera → face detection → attendance verification → database update → report dashboard pipeline with IoT hardware.</p>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">NumPy</span><span class="tech-tag">Statistics</span><span class="tech-tag">IoT</span><span class="tech-tag">Computer Vision</span></div>
+    </div>
+
+    <!-- WEB -->
+    <div class="project-card" data-cat="web">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--coral-light);color:var(--coral-dark)"><i class="ti ti-user-plus" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--coral-light);color:var(--coral-dark)">Web</span>
+      </div>
+      <h3>Website User Register & Auth</h3>
+      <p class="project-desc">PHP registration and login with phpMyAdmin backend. Secured tools and blog pages require authentication to access.</p>
+      <div class="project-tech"><span class="tech-tag">PHP</span><span class="tech-tag">phpMyAdmin</span><span class="tech-tag">HTML</span><span class="tech-tag">JS</span><span class="tech-tag">CSS</span></div>
+    </div>
+
+    <div class="project-card" data-cat="web">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--coral-light);color:var(--coral-dark)"><i class="ti ti-chart-line" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--coral-light);color:var(--coral-dark)">Web</span>
+      </div>
+      <h3>Web-Based SCADA Dashboard</h3>
+      <p class="project-desc">Browser-based HMI-style monitoring dashboard with trend graphs and data visualization — similar to Siemens WinCC in a browser.</p>
+      <div class="project-tech"><span class="tech-tag">PHP</span><span class="tech-tag">phpMyAdmin</span><span class="tech-tag">Charts</span></div>
+    </div>
+
+    <div class="project-card" data-cat="web">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--coral-light);color:var(--coral-dark)"><i class="ti ti-home-cog" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--coral-light);color:var(--coral-dark)">Web</span>
+      </div>
+      <h3>Cleaning Service Web App</h3>
+      <p class="project-desc">Full-stack service platform built with HTML, CSS, JavaScript, Google Apps Script, and Google Sheets as database.</p>
+      <div class="project-tech"><span class="tech-tag">HTML/CSS/JS</span><span class="tech-tag">Google Apps Script</span><span class="tech-tag">Google Sheets</span></div>
+    </div>
+
+    <!-- SITE / FIELD -->
+    <div class="project-card" data-cat="site">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--pink-light);color:var(--pink)"><i class="ti ti-plug" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--pink-light);color:var(--pink)">Site / Field</span>
+      </div>
+      <h3>Metro Train Cabinet Mounting & Wiring</h3>
+      <p class="project-desc">Hands-on mounting and wiring of Panama cabinets for the metro train project on site.</p>
+      <div class="project-tech"><span class="tech-tag">Industrial Wiring</span><span class="tech-tag">Panama Cabinet</span></div>
+    </div>
+
+    <div class="project-card" data-cat="site">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--pink-light);color:var(--pink)"><i class="ti ti-clipboard-check" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--pink-light);color:var(--pink)">Site / Field</span>
+      </div>
+      <h3>Metro Train Overall QC</h3>
+      <p class="project-desc">Full quality control oversight for the Panama metro train project across all systems and stations.</p>
+      <div class="project-tech"><span class="tech-tag">Quality Control</span><span class="tech-tag">Industrial</span></div>
+    </div>
+
+    <div class="project-card" data-cat="site">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--pink-light);color:var(--pink)"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--pink-light);color:var(--pink)">Site / Field</span>
+      </div>
+      <h3>FAT Documentation — Stations 13 & 9</h3>
+      <p class="project-desc">Prepared Factory Acceptance Test documents for stations 13 and 9 of the metro project.</p>
+      <div class="project-tech"><span class="tech-tag">FAT</span><span class="tech-tag">Documentation</span></div>
+    </div>
+
+    <div class="project-card" data-cat="site">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--pink-light);color:var(--pink)"><i class="ti ti-tools" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--pink-light);color:var(--pink)">Site / Field</span>
+      </div>
+      <h3>FAT Support — Stations 13, 9, 5, 4, ET2</h3>
+      <p class="project-desc">On-site FAT support across five stations and one electrical room for system commissioning and sign-off.</p>
+      <div class="project-tech"><span class="tech-tag">FAT Support</span><span class="tech-tag">Commissioning</span></div>
+    </div>
+
+    <div class="project-card" data-cat="site">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--pink-light);color:var(--pink)"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--pink-light);color:var(--pink)">Site / Field</span>
+      </div>
+      <h3>DCN — Subdistribution</h3>
+      <p class="project-desc">Design change notice for subdistribution system modifications in the metro project.</p>
+      <div class="project-tech"><span class="tech-tag">DCN</span><span class="tech-tag">Electrical</span></div>
+    </div>
+
+    <div class="project-card" data-cat="site">
+      <div class="project-header">
+        <div class="project-icon" style="background:var(--pink-light);color:var(--pink)"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+        <span class="cat-badge" style="background:var(--pink-light);color:var(--pink)">Site / Field</span>
+      </div>
+      <h3>DCN — 24VDC Parallel Incomer Path</h3>
+      <p class="project-desc">DCN for provisioning a parallel redundant path for the 24VDC incomer power supply.</p>
+      <div class="project-tech"><span class="tech-tag">DCN</span><span class="tech-tag">Power Supply</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" style="background:white;padding:3.5rem 2rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label"><i class="ti ti-tools" aria-hidden="true"></i> Skills</div>
+    <h2 class="section-title">Technology toolkit</h2>
+    <div class="skills-container">
+      <div class="skill-group">
+        <div class="skill-group-header"><div class="skill-group-icon"><i class="ti ti-brand-windows" aria-hidden="true"></i></div><h3>Microsoft 365 & Power Platform</h3></div>
+        <div class="skill-list">
+          <span class="skill-pill">SharePoint Online</span><span class="skill-pill">SPFx</span><span class="skill-pill">Power Apps</span><span class="skill-pill">Power Automate</span><span class="skill-pill">Graph API</span><span class="skill-pill">Teams</span><span class="skill-pill">Power BI</span><span class="skill-pill">Nintex</span><span class="skill-pill">Sharegate</span><span class="skill-pill">Azure Cloud</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-header"><div class="skill-group-icon"><i class="ti ti-database" aria-hidden="true"></i></div><h3>Databases & Data Engineering</h3></div>
+        <div class="skill-list">
+          <span class="skill-pill">SQL Server</span><span class="skill-pill">MS Access</span><span class="skill-pill">T-SQL</span><span class="skill-pill">Stored Procedures</span><span class="skill-pill">SSIS</span><span class="skill-pill">SSRS</span><span class="skill-pill">ETL</span><span class="skill-pill">phpMyAdmin</span><span class="skill-pill">Google Sheets</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-header"><div class="skill-group-icon"><i class="ti ti-cpu-2" aria-hidden="true"></i></div><h3>SCADA & Industrial</h3></div>
+        <div class="skill-list">
+          <span class="skill-pill">GE Cimplicity</span><span class="skill-pill">OPC DA/GDA</span><span class="skill-pill">Matrikon OPC</span><span class="skill-pill">Siemens PLC</span><span class="skill-pill">ADO</span><span class="skill-pill">ODBC</span><span class="skill-pill">Historian Systems</span><span class="skill-pill">Industrial Wiring</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-header"><div class="skill-group-icon"><i class="ti ti-code" aria-hidden="true"></i></div><h3>Programming & Scripting</h3></div>
+        <div class="skill-list">
+          <span class="skill-pill">Python</span><span class="skill-pill">VBScript</span><span class="skill-pill">JavaScript</span><span class="skill-pill">PHP</span><span class="skill-pill">C</span><span class="skill-pill">SQL</span><span class="skill-pill">Google Apps Script</span><span class="skill-pill">ASP.NET Core</span><span class="skill-pill">Razor Pages</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-header"><div class="skill-group-icon"><i class="ti ti-table" aria-hidden="true"></i></div><h3>Excel & Data Tools</h3></div>
+        <div class="skill-list">
+          <span class="skill-pill">VBA</span><span class="skill-pill">Advanced Excel</span><span class="skill-pill">Power Query</span><span class="skill-pill">DAX</span><span class="skill-pill">pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Tableau</span><span class="skill-pill">Statistics</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-header"><div class="skill-group-icon"><i class="ti ti-brain" aria-hidden="true"></i></div><h3>AI, ML & Computer Vision</h3></div>
+        <div class="skill-list">
+          <span class="skill-pill">Azure Custom Vision</span><span class="skill-pill">Machine Learning</span><span class="skill-pill">Naïve Bayes</span><span class="skill-pill">Face Recognition</span><span class="skill-pill">Object Detection</span><span class="skill-pill">IoT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="contact" class="cta-section">
+  <h2>Let's build something great</h2>
+  <p>Enterprise software · Industrial automation · AI — a rare combination, ready from day one.</p>
+  <div class="cta-cards">
+    <div class="cta-card"><i class="ti ti-map-pin"></i> Madurai, Tamil Nadu, India</div>
+    <div class="cta-card"><i class="ti ti-bolt"></i> Available to join immediately</div>
+    <div class="cta-card"><i class="ti ti-school"></i> B.Tech — AI & Data Science</div>
+  </div>
+  <div class="hero-actions">
+    <a class="btn-primary" href="mailto:yuvasivasakthi.2002@email.com"><i class="ti ti-mail"></i> Send Email</a>
+  </div>
+</section>
+
+<footer>&copy; 2026 Yuvasivasakthi G · Built with care</footer>
+
+<script>
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
